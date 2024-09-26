@@ -1,5 +1,14 @@
-#####################################################################################
-# Terraform module examples are meant to show an _example_ on how to use a module
-# per use-case. The code below should not be copied directly but referenced in order
-# to build your own root module that invokes this module
-#####################################################################################
+# Copyright (C) Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+module "udf" {
+  source  = "aws-ia/redshift-copy-udf/aws"
+  version = "~> 1.0"
+
+  name        = "redshift-copy-udf"
+  memory_size = 128
+  timeout     = 5
+
+  vpc_subnet_ids     = null # replace with comma separated values
+  security_group_ids = null # replace with comma separated values
+}

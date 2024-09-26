@@ -44,3 +44,9 @@ go.sum
 
 # Terraform tests 
 tests/*.auto.tfvars
+
+*.tfplan*
+**/builds*
+
+.DS_Store
+**/.DS_Store
