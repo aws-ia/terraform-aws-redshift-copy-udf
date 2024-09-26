@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 module "udf" {
-  source  = "aws-ia/redshift-copy-udf/aws"
+  source  = "../../"
   version = "~> 1.0"
 
   name        = "redshift-copy-udf"
