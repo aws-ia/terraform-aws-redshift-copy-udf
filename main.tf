@@ -41,7 +41,7 @@ module "lambda_alias" {
   create        = true
   refresh_alias = true
   name          = var.name
-  function_name = module.lambda_function.lambda_function_name
+  function_name = module.lambda.lambda_function_name
 }
 
 resource "random_id" "this" {
