@@ -47,8 +47,9 @@ module "lambda" {
 # IAM Role for Redshift Constructs #
 ####################################
 resource "aws_iam_role" "redshift" {
-  name = format("%s-%s", var.name, random_id.this.hex)
+  name = format("%s-%s-role", var.name, random_id.this.hex)
   path = "/service-role/"
+
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -68,8 +69,9 @@ resource "aws_iam_role" "redshift" {
 }
 
 resource "aws_iam_role_policy" "redshift" {
-  name = format("%s-%s", var.name, random_id.this.hex)
+  name = format("%s-%s-policy", var.name, random_id.this.hex)
   role = aws_iam_role.redshift.id
+
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
