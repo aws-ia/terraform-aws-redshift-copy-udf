@@ -35,6 +35,15 @@ module "lambda" {
   )
 }
 
+module "lambda_alias" {
+  source        = "terraform-aws-modules/lambda/aws//modules/alias"
+  version       = "~> 7.0"
+  create        = true
+  refresh_alias = true
+  name          = var.name
+  function_name = module.lambda_function.lambda_function_name
+}
+
 resource "random_id" "this" {
   byte_length = 4
 
