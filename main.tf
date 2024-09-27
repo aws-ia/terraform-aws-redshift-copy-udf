@@ -9,7 +9,7 @@ module "lambda" {
   version       = "~> 7.0"
   function_name = var.name
   handler       = "function.handler"
-  runtime       = "python3.11"
+  runtime       = "python3.9"
   memory_size   = var.memory_size
   timeout       = var.timeout
   source_path   = "${path.module}/lambda_udf"
