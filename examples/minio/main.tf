@@ -40,7 +40,7 @@ module "vpc" {
     to_port   = 0
     protocol  = "-1"
     self      = true
-  },{
+    }, {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
@@ -126,6 +126,7 @@ resource "aws_eks_addon" "this" {
 resource "aws_iam_policy" "eks" {
   name = "${var.name}-eks-policy"
   path = "/"
+
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -183,7 +184,22 @@ resource "aws_iam_policy" "eks" {
 #######################
 resource "aws_kms_key" "kms" {
   deletion_window_in_days = 7
+  enable_key_rotation     = true
   key_usage               = "ENCRYPT_DECRYPT"
+
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow"
+        "Action" : "kms:*"
+        "Resource" : "*"
+        "Principal" : {
+          "AWS" : data.aws_caller_identity.this.account_id
+        }
+      }
+    ]
+  })
 }
 
 resource "aws_kms_alias" "alias" {
@@ -219,6 +235,7 @@ resource "aws_redshiftserverless_workgroup" "this" {
 resource "aws_iam_role" "redshift" {
   name = "${var.name}-redshift-role"
   path = "/service-role/"
+
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
