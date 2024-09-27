@@ -6,13 +6,6 @@ locals {
     "arn:${data.aws_partition.this.partition}:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
     "arn:${data.aws_partition.this.partition}:iam::aws:policy/AmazonS3ReadOnlyAccess",
   ]
-  lambda_function_arn = format(
-    "arn:%s:lambda:%s:%s:function:%s",
-    data.aws_partition.this.partition,
-    data.aws_region.this.name,
-    data.aws_caller_identity.this.account_id,
-    var.name
-  )
   secret_count = try(trimspace(var.storage_secret_arn), "") != "" ? 1 : 0
   env_vars = (
     local.secret_count > 0

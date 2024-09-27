@@ -4,6 +4,14 @@
 ##############################
 # Lambda Function Constructs #
 ##############################
+resource "random_id" "this" {
+  byte_length = 4
+
+  keepers = {
+    spf_gid = format("%s-%s-%s", var.name, var.memory_size, var.timeout)
+  }
+}
+
 module "lambda" {
   source        = "terraform-aws-modules/lambda/aws"
   version       = "~> 7.0"
@@ -35,28 +43,11 @@ module "lambda" {
   )
 }
 
-module "lambda_alias" {
-  source        = "terraform-aws-modules/lambda/aws//modules/alias"
-  version       = "~> 7.0"
-  create        = true
-  refresh_alias = true
-  name          = var.name
-  function_name = module.lambda.lambda_function_name
-}
-
-resource "random_id" "this" {
-  byte_length = 4
-
-  keepers = {
-    spf_gid = format("%s-%s-%s", var.name, var.memory_size, var.timeout)
-  }
-}
-
 ####################################
 # IAM Role for Redshift Constructs #
 ####################################
 resource "aws_iam_role" "redshift" {
-  name = "${var.name}-role"
+  name = format("%s-%s", var.name, random_id.this.hex)
   path = "/service-role/"
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
@@ -77,7 +68,7 @@ resource "aws_iam_role" "redshift" {
 }
 
 resource "aws_iam_role_policy" "redshift" {
-  name = "${var.name}-policy"
+  name = format("%s-%s", var.name, random_id.this.hex)
   role = aws_iam_role.redshift.id
   policy = jsonencode({
     "Version" : "2012-10-17",
@@ -85,7 +76,7 @@ resource "aws_iam_role_policy" "redshift" {
       {
         "Effect" : "Allow",
         "Action" : "lambda:InvokeFunction",
-        "Resource" : local.lambda_function_arn
+        "Resource" : module.lambda.lambda_function_arn
       }
     ]
   })
