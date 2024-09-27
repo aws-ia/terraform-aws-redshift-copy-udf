@@ -66,7 +66,6 @@ module "udf" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | Lambda UDF memory size | `number` | `128` | no |
 | <a name="input_name"></a> [name](#input\_name) | Lambda UDF function name | `string` | `"redshift-copy-udf"` | no |
-| <a name="input_region"></a> [region](#input\_region) | AWS Region | `string` | `"us-east-1"` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | Security Group IDs (comma separated values) | `string` | `null` | no |
 | <a name="input_storage_pass"></a> [storage\_pass](#input\_storage\_pass) | Storage Password to Access S3 API Compliant Storage | `string` | `null` | no |
 | <a name="input_storage_secret_arn"></a> [storage\_secret\_arn](#input\_storage\_secret\_arn) | Secrets Manager ARN for S3 API Compliant Storage Credentials | `string` | `null` | no |
