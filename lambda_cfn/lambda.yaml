@@ -55,7 +55,7 @@ Resources:
       Role: !GetAtt 'LambdaRole.Arn'
       Timeout: 300
       Handler: index.handler
-      Runtime: python3.12
+      Runtime: python3.11
       Code:
         ZipFile: |
           import boto3, json, sys, os
