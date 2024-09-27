@@ -68,7 +68,7 @@ resource "aws_iam_role_policy" "redshift" {
       {
         "Effect" : "Allow",
         "Action" : "lambda:InvokeFunction",
-        "Resource" : "${local.lambda_function_arn}"
+        "Resource" : local.lambda_function_arn
       }
     ]
   })
