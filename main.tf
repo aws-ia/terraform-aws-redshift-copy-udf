@@ -7,7 +7,7 @@
 module "lambda" {
   source        = "terraform-aws-modules/lambda/aws"
   version       = "~> 7.0"
-  function_name = var.name
+  function_name = format("%s-%s", var.name, random_id.this.hex)
   handler       = "function.handler"
   runtime       = "python3.9"
   memory_size   = var.memory_size
@@ -33,6 +33,14 @@ module "lambda" {
     try(trimspace(var.vpc_subnet_ids), "") != ""
     ? split(",", var.vpc_subnet_ids) : null
   )
+}
+
+resource "random_id" "this" {
+  byte_length = 4
+
+  keepers = {
+    spf_gid = format("%s-%s-%s", var.name, var.memory_size, var.timeout)
+  }
 }
 
 ####################################
