@@ -12,5 +12,5 @@ data "aws_secretsmanager_secret" "this" {
 
 data "aws_secretsmanager_secret_version" "this" {
   count     = local.secret_count
-  secret_id = data.aws_secretsmanager_secret.this.0.id
+  secret_id = data.aws_secretsmanager_secret.this[0].id
 }
