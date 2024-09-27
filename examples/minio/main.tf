@@ -181,8 +181,19 @@ resource "aws_iam_policy" "eks" {
 #######################
 # Redshift Constructs #
 #######################
+resource "aws_kms_key" "kms" {
+  deletion_window_in_days = 7
+  key_usage               = "ENCRYPT_DECRYPT"
+}
+
+resource "aws_kms_alias" "alias" {
+  name          = "alias/redshift-serverless"
+  target_key_id = aws_kms_key.kms.key_id
+}
+
 resource "aws_redshiftserverless_namespace" "this" {
   namespace_name        = "${var.name}-namespace"
+  kms_key_id            = aws_kms_key.kms.arn
   iam_roles             = [aws_iam_role.redshift.arn]
   log_exports           = ["connectionlog", "useractivitylog", "userlog"]
   manage_admin_password = true
