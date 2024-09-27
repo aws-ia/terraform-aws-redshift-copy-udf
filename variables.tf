@@ -1,12 +1,6 @@
 # Copyright (C) Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-variable "region" {
-  type        = string
-  default     = "us-east-1"
-  description = "AWS Region"
-}
-
 variable "name" {
   type        = string
   default     = "redshift-copy-udf"
