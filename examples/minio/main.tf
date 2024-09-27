@@ -5,7 +5,9 @@
 # Redshift UDF Module #
 #######################
 module "udf" {
-  source             = "aws-ia/redshift-copy-udf/aws"
+  source = "../../"
+  # source             = "aws-ia/redshift-copy-udf/aws"
+  # version            = "~> 1.0"
   memory_size        = 128
   timeout            = 5
   vpc_subnet_ids     = join(",", module.vpc.private_subnets)
