@@ -44,7 +44,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | This is the CIDR block for your EKS cluster | `string` | `"10.0.0.0/16"` | no |
-| <a name="input_k8s"></a> [k8s](#input\_k8s) | This is the version of your EKS cluster | `string` | `"1.29"` | no |
+| <a name="input_k8s"></a> [k8s](#input\_k8s) | This is the version of your EKS cluster | `string` | `"1.31"` | no |
 | <a name="input_name"></a> [name](#input\_name) | This is the name of your EKS cluster | `string` | `"redshift-minio-demo"` | no |
 
 ## Outputs
