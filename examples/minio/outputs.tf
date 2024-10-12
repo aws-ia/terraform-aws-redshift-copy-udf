@@ -27,8 +27,9 @@ output "lambda_function_name" {
 }
 
 output "storage_instructions" {
-  value = <<INSTRUCTIONS
-  # To install open source storage solution into an existing EKS cluster:
+  description = "Instructions to install the MinIO storage solution"
+  value       = <<INSTRUCTIONS
+  # To install open source storage solution on EKS cluster:
 
   1) Associate OIDC provider
     eksctl utils associate-iam-oidc-provider \

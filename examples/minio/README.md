@@ -13,6 +13,26 @@ AWS Lambda UDF (User Defined Function).
 
 ![Architecture Diagram](../../docs/minio-diagram.png "Architecture Diagram")
 
+## Usage
+
+* Initialize terraform configs and modules
+
+```sh
+terraform init
+```
+
+* Review the resources to be created by terraform
+
+```sh
+terraform plan
+```
+
+* Apply the changes reviewed in the previous step
+
+```sh
+terraform apply
+```
+
 ## Requirements
 
 | Name | Version |
@@ -70,5 +90,5 @@ AWS Lambda UDF (User Defined Function).
 | <a name="output_iam_role_name"></a> [iam\_role\_name](#output\_iam\_role\_name) | IAM Role Name for Redshift Permissions |
 | <a name="output_lambda_function_arn"></a> [lambda\_function\_arn](#output\_lambda\_function\_arn) | Lambda Function ARN for Redshift UDF |
 | <a name="output_lambda_function_name"></a> [lambda\_function\_name](#output\_lambda\_function\_name) | Lambda Function Name for Redshift UDF |
-| <a name="output_storage_instructions"></a> [storage\_instructions](#output\_storage\_instructions) | n/a |
+| <a name="output_storage_instructions"></a> [storage\_instructions](#output\_storage\_instructions) | Instructions to install the MinIO storage solution |
 <!-- END_TF_DOCS -->
