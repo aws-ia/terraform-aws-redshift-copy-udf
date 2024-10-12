@@ -9,7 +9,7 @@ metadata:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: storage-configuration
+  name: minio-config
   namespace: minio-tenant
 type: Opaque
 stringData:
@@ -27,12 +27,12 @@ metadata:
 spec:
   serviceMetadata:
     minioServiceAnnotations:
-      service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-0a4cecff434c80e6e"
+      service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-abcdefg12344567890"
   exposeServices:
     console: true
     minio: true
   configuration:
-    name: storage-configuration
+    name: minio-config
   image: quay.io/minio/minio:RELEASE.2023-05-27T05-56-19Z
   pools:
     - servers: 4

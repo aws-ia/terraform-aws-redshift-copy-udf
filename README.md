@@ -11,7 +11,7 @@ AWS Lambda UDF (User Defined Function).
 
 ## Architecture Diagram
 
-![Architecture Diagram](./docs/diagram.png "Architecture Diagram")
+![Architecture Diagram](./docs/architecture-diagram.png "Architecture Diagram")
 
 ## Usage
 
@@ -26,6 +26,12 @@ module "udf" {
 
   vpc_subnet_ids     = null # replace with comma separated values
   security_group_ids = null # replace with comma separated values
+
+  storage_url        = null # replace with storage url
+  storage_user       = null # replace with storage user
+  storage_pass       = null # replace with storage pass
+  storage_token      = null # replace with storage token (optional)
+  storage_secret_arn = null # replace with secrets manager arn (optional)
 }
 ```
 
@@ -69,7 +75,8 @@ module "udf" {
 | <a name="input_name"></a> [name](#input\_name) | Lambda UDF function name | `string` | `"redshift-copy-udf"` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | Security Group IDs (comma separated values) | `string` | `null` | no |
 | <a name="input_storage_pass"></a> [storage\_pass](#input\_storage\_pass) | Storage Password to Access S3 API Compliant Storage | `string` | `null` | no |
-| <a name="input_storage_secret_arn"></a> [storage\_secret\_arn](#input\_storage\_secret\_arn) | Secrets Manager ARN for S3 API Compliant Storage Credentials | `string` | `null` | no |
+| <a name="input_storage_secret_arn"></a> [storage\_secret\_arn](#input\_storage\_secret\_arn) | Secrets Manager ARN Holding Credentials to Access S3 API Compliant Storage (Optional) | `string` | `null` | no |
+| <a name="input_storage_token"></a> [storage\_token](#input\_storage\_token) | Storage Token to Access S3 API Compliant Storage (Optional) | `string` | `null` | no |
 | <a name="input_storage_url"></a> [storage\_url](#input\_storage\_url) | Storage URL to Access S3 API Compliant Storage | `string` | `null` | no |
 | <a name="input_storage_user"></a> [storage\_user](#input\_storage\_user) | Storage Username to Access S3 API Compliant Storage | `string` | `null` | no |
 | <a name="input_timeout"></a> [timeout](#input\_timeout) | Lambda UDF timeout | `number` | `300` | no |

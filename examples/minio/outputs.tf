@@ -48,5 +48,8 @@ output "storage_instructions" {
   3) Install EBS CSI Driver and Kubernetes Operator
     aws eks update-kubeconfig --name ${var.name} --region ${data.aws_region.this.name}
     kubectl apply -k "github.com/miniohq/marketplace/eks/resources"
+
+  4) Install MinIO Tenant
+    kubectl apply -k minio-tenant.yaml
   INSTRUCTIONS
 }
