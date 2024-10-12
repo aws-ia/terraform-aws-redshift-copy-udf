@@ -33,6 +33,12 @@ terraform plan
 terraform apply
 ```
 
+* When you need to clean up resources
+
+```sh
+terraform destroy
+```
+
 ## Requirements
 
 | Name | Version |
