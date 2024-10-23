@@ -25,9 +25,9 @@ metadata:
   name: minio
   namespace: minio-tenant
 spec:
-  serviceMetadata:
-    minioServiceAnnotations:
-      service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-abcdefg12344567890"
+  # serviceMetadata:
+  #   minioServiceAnnotations:
+  #     service.beta.kubernetes.io/aws-load-balancer-security-groups: ""
   exposeServices:
     console: true
     minio: true
