@@ -1,4 +1,44 @@
 <!-- BEGIN_TF_DOCS -->
+# MinIO Example
+
+This terraform module provides complimentary capabilities to
+[COPY command](https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html)
+by enabling data copy from S3 API compliant storage solutions such as
+[Cloudian](https://github.com/cloudian/cloudian-s3-operator),
+[MinIO](https://github.com/minio/minio), and
+[Weka](https://github.com/weka/csi-wekafs) into Amazon Redshift with
+AWS Lambda UDF (User Defined Function).
+
+## Architecture Diagram
+
+![Architecture Diagram](../../docs/minio-diagram.png "Architecture Diagram")
+
+## Usage
+
+* Initialize terraform configs and modules
+
+```sh
+terraform init
+```
+
+* Review the resources to be created by terraform
+
+```sh
+terraform plan
+```
+
+* Apply the changes reviewed in the previous step
+
+```sh
+terraform apply
+```
+
+* When you need to clean up resources
+
+```sh
+terraform destroy
+```
+
 ## Requirements
 
 | Name | Version |
@@ -44,7 +84,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | This is the CIDR block for your EKS cluster | `string` | `"10.0.0.0/16"` | no |
-| <a name="input_k8s"></a> [k8s](#input\_k8s) | This is the version of your EKS cluster | `string` | `"1.29"` | no |
+| <a name="input_k8s"></a> [k8s](#input\_k8s) | This is the version of your EKS cluster | `string` | `"1.31"` | no |
 | <a name="input_name"></a> [name](#input\_name) | This is the name of your EKS cluster | `string` | `"redshift-minio-demo"` | no |
 
 ## Outputs
@@ -56,5 +96,5 @@
 | <a name="output_iam_role_name"></a> [iam\_role\_name](#output\_iam\_role\_name) | IAM Role Name for Redshift Permissions |
 | <a name="output_lambda_function_arn"></a> [lambda\_function\_arn](#output\_lambda\_function\_arn) | Lambda Function ARN for Redshift UDF |
 | <a name="output_lambda_function_name"></a> [lambda\_function\_name](#output\_lambda\_function\_name) | Lambda Function Name for Redshift UDF |
-| <a name="output_storage_instructions"></a> [storage\_instructions](#output\_storage\_instructions) | n/a |
+| <a name="output_storage_instructions"></a> [storage\_instructions](#output\_storage\_instructions) | Instructions to install the MinIO storage solution |
 <!-- END_TF_DOCS -->

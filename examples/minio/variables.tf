@@ -9,7 +9,7 @@ variable "name" {
 
 variable "k8s" {
   type        = string
-  default     = "1.29"
+  default     = "1.31"
   description = "This is the version of your EKS cluster"
 }
 

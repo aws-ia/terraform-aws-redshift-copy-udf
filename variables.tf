@@ -31,12 +31,6 @@ variable "vpc_subnet_ids" {
   description = "VPC Subnet IDs (comma separated values)"
 }
 
-variable "storage_secret_arn" {
-  type        = string
-  default     = null
-  description = "Secrets Manager ARN for S3 API Compliant Storage Credentials"
-}
-
 variable "storage_url" {
   type        = string
   default     = null
@@ -47,10 +41,25 @@ variable "storage_user" {
   type        = string
   default     = null
   description = "Storage Username to Access S3 API Compliant Storage"
+  sensitive   = true
 }
 
 variable "storage_pass" {
   type        = string
   default     = null
   description = "Storage Password to Access S3 API Compliant Storage"
+  sensitive   = true
+}
+
+variable "storage_token" {
+  type        = string
+  default     = null
+  description = "Storage Token to Access S3 API Compliant Storage (Optional)"
+  sensitive   = true
+}
+
+variable "storage_secret_arn" {
+  type        = string
+  default     = null
+  description = "Secrets Manager ARN Holding Credentials to Access S3 API Compliant Storage (Optional)"
 }

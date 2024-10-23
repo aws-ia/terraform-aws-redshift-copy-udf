@@ -11,9 +11,10 @@ locals {
     local.secret_count > 0
     ? jsondecode(data.aws_secretsmanager_secret_version.this[0].secret_string)
     : {
-      STORAGE_URL  = var.storage_url
-      STORAGE_USER = var.storage_user
-      STORAGE_PASS = var.storage_pass
+      STORAGE_URL   = var.storage_url
+      STORAGE_USER  = var.storage_user
+      STORAGE_PASS  = var.storage_pass
+      STORAGE_TOKEN = var.storage_token
     }
   )
 }

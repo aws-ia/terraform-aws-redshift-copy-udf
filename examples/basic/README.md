@@ -1,4 +1,44 @@
 <!-- BEGIN_TF_DOCS -->
+# Basic Example
+
+This terraform module provides complimentary capabilities to
+[COPY command](https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html)
+by enabling data copy from S3 API compliant storage solutions such as
+[Cloudian](https://github.com/cloudian/cloudian-s3-operator),
+[MinIO](https://github.com/minio/minio), and
+[Weka](https://github.com/weka/csi-wekafs) into Amazon Redshift with
+AWS Lambda UDF (User Defined Function).
+
+## Architecture Diagram
+
+![Architecture Diagram](../../docs/architecture-diagram.png "Architecture Diagram")
+
+## Usage
+
+* Initialize terraform configs and modules
+
+```sh
+terraform init
+```
+
+* Review the resources to be created by terraform
+
+```sh
+terraform plan
+```
+
+* Apply the changes reviewed in the previous step
+
+```sh
+terraform apply
+```
+
+* When you need to clean up resources
+
+```sh
+terraform destroy
+```
+
 ## Requirements
 
 | Name | Version |
