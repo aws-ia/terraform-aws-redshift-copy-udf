@@ -41,18 +41,21 @@ variable "storage_user" {
   type        = string
   default     = null
   description = "Storage Username to Access S3 API Compliant Storage"
+  sensitive   = true
 }
 
 variable "storage_pass" {
   type        = string
   default     = null
   description = "Storage Password to Access S3 API Compliant Storage"
+  sensitive   = true
 }
 
 variable "storage_token" {
   type        = string
   default     = null
   description = "Storage Token to Access S3 API Compliant Storage (Optional)"
+  sensitive   = true
 }
 
 variable "storage_secret_arn" {
